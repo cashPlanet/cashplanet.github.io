@@ -1,0 +1,12 @@
+# Normalize text files to LF in the repo
+* text=auto eol=lf
+
+# Never touch binary assets (line-ending conversion corrupts these)
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.heic binary
