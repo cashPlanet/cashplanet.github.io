@@ -139,10 +139,9 @@
     aspect-ratio:4/5;border-radius:var(--r);border:2px solid var(--ink);
     background:linear-gradient(160deg,#EBA221,#A62F14);
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:12px;color:#FCF4E1;text-align:center;padding:0;
-    overflow:hidden;box-shadow:6px 6px 0 var(--ink);
+    font-family:var(--mono);font-size:12px;color:#FCF4E1;text-align:center;padding:20px;
+    box-shadow:6px 6px 0 var(--ink);
   }
-  .portrait img{width:100%;height:100%;object-fit:cover;}
 
   /* toolbox */
   .toolbox{margin-top:36px;border-top:2px solid var(--line);padding-top:24px;}
@@ -162,8 +161,6 @@
     transition:transform .16s ease, box-shadow .16s ease;
   }
   .card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--accent);}
-  .card.clickable{cursor:pointer;}
-  .card.clickable:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
   .thumb{
     aspect-ratio:16/10;
     background:linear-gradient(135deg,#F2C21C,#E8801E 60%,#C0341D);
@@ -293,7 +290,6 @@
           </div>
           <div class="cta-row">
             <a href="#work" class="btn btn-primary">See my work</a>
-            <a href="pdfs/resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Resume</a>
             <a href="#contact" class="btn btn-ghost">Get in touch</a>
           </div>
         </div>
@@ -334,7 +330,7 @@
             </div>
           </div>
         </div>
-        <div class="portrait reveal"><img src="images/about-portrait.jpg" alt="Ari Scheuer holding a high power rocket at a launch site" loading="lazy"></div>
+        <div class="portrait reveal">Add a photo here<br>(a rocket, a build, the shop)<br>replace with &lt;img&gt;</div>
       </div>
     </div>
   </section>
@@ -354,7 +350,7 @@
               <span class="chip done"><span class="dot"></span>Completed</span>
             </div>
             <h3>Two-Stage High Power Rocket</h3>
-            <p>Led the design and manufacturing of a two-stage rocket that launched, staged, and recovered from 14,000 ft — placing 6th of 21 teams at the 2026 Argonia Cup.</p>
+            <p>Led the design and manufacturing of a two-stage rocket that launched, staged, and recovered from 12,000 ft — placing 6th of 21 teams at the 2026 Argonia Cup.</p>
             <a href="#two-stage-rocket" class="more">Read more</a>
           </div>
         </article>
@@ -373,7 +369,7 @@
         </article>
 
         <article class="card reveal" data-project="rocket-projects">
-          <div class="thumb"><img src="images/rocket-projects.jpg" alt="High power rocket lifting off from a snowy field" loading="lazy"></div>
+          <div class="thumb">rocket projects photo</div>
           <div class="card-body">
             <div class="chips">
               <span class="chip">Rocketry &middot; Builds</span>
@@ -386,7 +382,7 @@
         </article>
 
         <article class="card reveal" data-project="citicar-restoration">
-          <div class="thumb"><img src="images/citicar-restoration.jpg" alt="Red 1972 Sebring-Vanguard Citicar parked under a canopy" loading="lazy"></div>
+          <div class="thumb">Citicar photo</div>
           <div class="card-body">
             <div class="chips">
               <span class="chip">Personal · EV</span>
@@ -399,7 +395,7 @@
         </article>
 
         <article class="card reveal" data-project="autonomous-mobile-robot">
-          <div class="thumb"><img src="images/autonomous-mobile-robot.jpg" alt="Autonomous mobile robot with an ultrasonic sensor and LED array on a 3D-printed chassis" loading="lazy"></div>
+          <div class="thumb">Robot photo</div>
           <div class="card-body">
             <div class="chips">
               <span class="chip">Coursework · Robotics</span>
@@ -422,7 +418,7 @@
       <div class="contact-grid">
         <div>
           <h4>Email</h4>
-          <a href="mailto:arischeuer@gmail.com">arischeuer@gmail.com</a>
+          <a href="mailto:your.email@msoe.edu">your.email@msoe.edu</a>
         </div>
         <div>
           <h4>School</h4>
@@ -536,25 +532,6 @@
     if(location.hash){ history.replaceState(null,"",location.pathname+location.search); }
     closeModal();
   }
-  // make every project card open its own PDF in the modal
-  document.querySelectorAll('.card[data-project]').forEach(function(card){
-    const slug=card.getAttribute("data-project");
-    if(!slugs.has(slug)) return;
-    card.classList.add("clickable");
-    card.setAttribute("tabindex","0");
-    card.setAttribute("role","button");
-    card.setAttribute("aria-label","Open project details");
-    function go(e){
-      e.preventDefault();
-      history.replaceState(null,"","#"+slug);
-      openModal(slug);
-    }
-    card.addEventListener("click",go);
-    card.addEventListener("keydown",function(e){
-      if(e.key==="Enter"||e.key===" ") go(e);
-    });
-  });
-
   modal.addEventListener("click",function(e){ if(e.target.hasAttribute("data-close")) dismiss(); });
   document.addEventListener("keydown",function(e){ if(e.key==="Escape") dismiss(); });
   window.addEventListener("hashchange",route);
